@@ -13,7 +13,7 @@ from . tokens import generate_token
 
 # Create your views here.
 def home(request):
-    return render(request, "authentication/templates/index.html")
+    return render(request, "authentication/index.html")
 
 def signup(request):
     if request.method == "POST":
@@ -81,7 +81,7 @@ def signup(request):
         return redirect('signin')
         
         
-    return render(request, "authentication/templates/signup.html")
+    return render(request, "authentication/signup.html")
 
 
 def activate(request,uidb64,token):
@@ -113,12 +113,12 @@ def signin(request):
             login(request, user)
             fname = user.first_name
             # messages.success(request, "Logged In Sucessfully!!")
-            return render(request, "authentication/templates/index.html",{"fname":fname})
+            return render(request, "authentication/index.html",{"fname":fname})
         else:
             messages.error(request, "Bad Credentials!!")
             return redirect('home')
     
-    return render(request, "authentication/templates/signin.html")
+    return render(request, "authentication/signin.html")
 
 
 def signout(request):
