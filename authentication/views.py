@@ -55,7 +55,11 @@ def signup(request):
         myuser.is_active = False
         myuser.save()
         messages.success(request, "Your Account has been created succesfully!! Please check your email to confirm your email address in order to activate your account.")
-        
+        return redirect('signin')
+
+        """
+        Anuj - MAC is facing some issue related to 'socket' as it is not able to detect localhost
+        """
         # Welcome Email
         subject = "Welcome to Store - Django Login!!"
         message = "Hello " + myuser.first_name + "!! \n" + "Welcome to Store!! \nThank you for visiting our website\n. We have also sent you a confirmation email, please confirm your email address. \n\nThanking You\n"        
