@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" 
+        rel="stylesheet" 
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" 
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/html" href="css/index.css">
+    <base href="/">
 </head>
 <body>
 
@@ -17,7 +25,20 @@
     </div>
     {% endfor %}
 
-    <h3>Welcome to University Alumni Portal!</h3>
+    <div class="box-form">
+        <div class="left">
+            <div class="overlay">
+            <h1>Welcome to University Alumni Portal!</h1>
+            <p>Connect with Students, Alumni and People around the world</p>
+            <span>
+                <p>login with social media</p>
+                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Login with Twitter</a>
+            </span>
+            </div>
+        </div>
+
+    <h3></h3>
 
 
     {% if user.is_authenticated %}
