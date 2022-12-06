@@ -12,8 +12,12 @@ from django.contrib.auth import authenticate, login, logout
 from . tokens import generate_token
 
 # Create your views here.
-def home(request):
+def newlogin(request):
     return render(request, "authentication/index.html")
+
+def home(request):
+    return render(request, "authentication/home.html")
+
 
 def signup(request):
     if request.method == "POST":
@@ -26,23 +30,23 @@ def signup(request):
         
         if User.objects.filter(username=username):
             messages.error(request, "Username already exist! Please try some other username.")
-            return redirect('home')
+            return redirect('newlogin')
         
         if User.objects.filter(email=email).exists():
             messages.error(request, "Email Already Registered!!")
-            return redirect('home')
+            return redirect('newlogin')
         
         if len(username)>20:
             messages.error(request, "Username must be under 20 charcters!!")
-            return redirect('home')
+            return redirect('newlogin')
         
         if pass1 != pass2:
             messages.error(request, "Passwords didn't matched!!")
-            return redirect('home')
+            return redirect('newlogin')
         
         if not username.isalnum():
             messages.error(request, "Username must be Alpha-Numeric!!")
-            return redirect('home')
+            return redirect('newlogin')
         
         myuser = User.objects.create_user(username, email, pass1)
         myuser.first_name = fname
@@ -113,10 +117,10 @@ def signin(request):
             login(request, user)
             fname = user.first_name
             # messages.success(request, "Logged In Sucessfully!!")
-            return render(request, "authentication/index.html",{"fname":fname})
+            return render(request, "authentication/home.html",{"fname":fname})
         else:
             messages.error(request, "Bad Credentials!!")
-            return redirect('home')
+            return redirect('newlogin')
     
     return render(request, "authentication/signin.html")
 
@@ -124,4 +128,4 @@ def signin(request):
 def signout(request):
     logout(request)
     messages.success(request, "Logged Out Successfully!!")
-    return redirect('home')
+    return redirect('newlogin')
